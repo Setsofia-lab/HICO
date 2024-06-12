@@ -1,18 +1,25 @@
 from django.http import HttpResponse
 from django.template import loader
 
+from django.shortcuts import render
+
 from .models import Blog
+
+def homepage(request):
+    return HttpResponse("This is the HICO homepage")
+
+# def blog(request):
+#     latest_blogs = Blog.objects.order_by("-pub_date")[:5]
+#     output = ",".join([blog.title for blog in latest_blogs])
+#     return HttpResponse(output)
 
 def blog(request):
     latest_blogs = Blog.objects.order_by("-pub_date")[:5]
-    template = loader.get_template("blog/blog.html")
-    context = {
-        "latest_blogs": latest_blogs,
-    }
-    return HttpResponse(template.render(context, request))
+    context = {"latest_blogs": latest_blogs,}
+    return render(request, "hicoApp/blog.html", context)
 
-def blog(request):
-    return HttpResponse("All Blog Titles go here")
+# def blog(request):
+#     return HttpResponse("All Blog Titles go here")
 
 def blog_detail (request, blog_id):
     return HttpResponse (" You are looking at HICO blogPost %s." %blog_id)
