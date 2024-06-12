@@ -1,0 +1,9 @@
+{% if latest_widows %}
+    <ul>
+    {% for w in latest_widows %}
+        <li><a href="/widows/{{ widows.id }}/">{{ widows.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No Widows projects are available.</p>
+{% endif %} 

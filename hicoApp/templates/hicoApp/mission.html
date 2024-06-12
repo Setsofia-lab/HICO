@@ -1,0 +1,9 @@
+{% if latest_missions %}
+    <ul>
+    {% for m in latest_missions %}
+        <li><a href="/mission/{{ mission.id }}/">{{ mission.title }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No missions are available.</p>
+{% endif %} 
