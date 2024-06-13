@@ -1,12 +1,10 @@
 from django.http import HttpResponse
-from django.template import loader
-
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 
 from .models import *
 
 def homepage(request):
-    return HttpResponse("This is the HICO homepage")
+    return render(request, "hicoApp/homepage.html")
 
 # def blog(request):
 #     latest_blogs = Blog.objects.order_by("-pub_date")[:5]
@@ -19,7 +17,8 @@ def blog(request):
     return render(request, "hicoApp/blog.html", context)
 
 def blog_detail (request, blog_id):
-    return HttpResponse (" You are looking at HICO blogPost %s." %blog_id)
+    blog = get_object_or_404(Blog, pk=blog_id)
+    return render (request,  "hicoApp/blog_detail.html", {"blog": blog})
 
 def mission(request):
     latest_missions = Mission.objects.order_by("-pub_date")[:5]
@@ -27,7 +26,8 @@ def mission(request):
     return render(request, "hicoApp/mission.html", context)
 
 def mission_detail (request, mission_id):
-    return HttpResponse (" You are looking at HICO Mission %s." %mission_id)
+    mission = get_object_or_404(Mission, pk=mission_id)
+    return render (request,  "hicoApp/mission_detail.html", {"mission": mission})
 
 def widows(request):
     latest_widows = Widows.objects.order_by("-pub_date")[:5]
@@ -35,4 +35,5 @@ def widows(request):
     return render(request, "hicoApp/widows.html", context)
 
 def widows_detail (request, widows_id):
-    return HttpResponse (" You are looking at HICO Widows Project %s." %widows_id)
+    widows = get_object_or_404(Widows, pk=widows_id)
+    return render (request,  "hicoApp/widows_detail.html", {"widows": widows})
