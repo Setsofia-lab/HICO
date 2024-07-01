@@ -1,10 +1,11 @@
+from django.conf import settings
 from django.urls import path
 
 from . import views
 
 app_name = "hicoApp"
 urlpatterns = [
-    path("", views.homepage, name="homepage"),
+    path("", views.index, name="index"),
 
     path("blog/", views.blog, name="blog"),
     path("blog/<int:blog_id>/", views.blog_detail, name="blog_detail"),

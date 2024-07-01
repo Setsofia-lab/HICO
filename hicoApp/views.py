@@ -3,8 +3,8 @@ from django.shortcuts import get_object_or_404, render
 
 from .models import *
 
-def homepage(request):
-    return render(request, "hicoApp/homepage.html")
+def index(request):
+    return render(request, "hicoApp/index.html")
 
 # def blog(request):
 #     latest_blogs = Blog.objects.order_by("-pub_date")[:5]
